@@ -13,12 +13,13 @@ public class LALALA : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask whatIsGround;
     private bool grounded;
+    private Animator anim; 
 
 
    
     void Start()
     {
-
+        anim = GetComponent<Animator>();
     }
 
      void Update()
@@ -45,7 +46,7 @@ GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigid
 if(GetComponent<SpriteRenderer>() != null)
 GetComponent<SpriteRenderer>().flipX = false;
     }
-
+anim.SetFloat("Speed",Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
         }
 
     void Jump()
