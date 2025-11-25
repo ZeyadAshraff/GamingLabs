@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -15,7 +17,17 @@ public class PlayerStats : MonoBehaviour
     public bool isImmune=false;
     private float ImmunityTime=0f;
     public float immunityDuration =1.5f;
+    public TextMeshProUGUI scoreUI;
+    public static int score;
 
+void OnTriggerEnter2D(Collider2D other)
+{
+    if(other.tag=="Player")
+    {
+        PlayerStats.score++;
+        Destroy(gameObject);
+    }
+}
 
 
     void SpriteFlicker()
@@ -75,5 +87,6 @@ public class PlayerStats : MonoBehaviour
 
             }
         }
+        scoreUI.text=" " + score;
     }
 }
